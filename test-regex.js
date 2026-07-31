@@ -1,0 +1,1 @@
+const decodedValue = decodeURIComponent('%22restaurant%22'); const cleanValue = decodedValue.replace(/^"|"$/g, ''); try { console.log('JSON parse clean:', JSON.parse(cleanValue)); } catch(e) { console.log('Error thrown! Return:', decodeURIComponent('%22restaurant%22')); }

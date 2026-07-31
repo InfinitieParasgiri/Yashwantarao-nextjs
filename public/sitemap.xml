@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/about-us/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/brands/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/categories/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/delivery-zones/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/faqs/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/feature-sections/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/privacy-policy/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/products/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/return-refund-policy/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/seller-register/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/shipping-policy/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/terms-and-conditions/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/daily-cook-restaurant/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/seema-shah/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/spicy-food-1/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/starbucks/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/tasty-bites/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hyperlocal-yashwantarao-customizati.vercel.app/stores/us-pizza/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
