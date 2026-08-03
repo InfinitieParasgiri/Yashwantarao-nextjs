@@ -377,12 +377,12 @@ const CategoryProductsPage: NextPageWithLayout<CategoryProductsPageProps> = ({
                 onLoadMore={loadMore}
               >
                 <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2">
-                  {isLoading && products.length === 0
+                  {isLoading
                     ? Array.from({ length: PER_PAGE }).map((_, i) => (
                         <ProductCardSkeleton key={i} />
                       ))
-                    : products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                    : products.map((product, idx) => (
+                        <ProductCard key={`${product.id}-${idx}`} product={product} />
                       ))}
                 </div>
 
@@ -394,13 +394,13 @@ const CategoryProductsPage: NextPageWithLayout<CategoryProductsPageProps> = ({
                   </div>
                 )}
 
-                {products.length > 0 ? (
+                {!isLoading && products.length > 0 ? (
                   <InfiniteScrollStatus
                     entityType={t("pages.categoryProducts.infiniteScroll")}
                     total={total}
                     hasMore={hasMore}
                   />
-                ) : (
+                ) : !isLoading && products.length === 0 ? (
                   <NoProductsFound
                     icon={Package}
                     title={t("pages.categoryProducts.noProducts.title")}
@@ -423,7 +423,7 @@ const CategoryProductsPage: NextPageWithLayout<CategoryProductsPageProps> = ({
                       </div>
                     }
                   />
-                )}
+                ) : null}
               </InfiniteScroll>
             </div>
           </div>

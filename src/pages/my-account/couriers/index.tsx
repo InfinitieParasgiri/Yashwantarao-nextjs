@@ -297,7 +297,7 @@ const CouriersContent = ({ couriers }: { couriers: CouriersData }) => {
                     <div className="flex flex-col min-w-0">
                       <div className="flex gap-2 items-center flex-wrap sm:flex-nowrap">
                         <h3 className="font-semibold text-sm sm:text-medium text-foreground whitespace-nowrap">
-                          {t("courier.listings.cardTitle", "Courier: #{{id}}", { id: booking.id })}
+                          {t("courier.listings.cardTitle", "Courier: {{id}}", { id: booking.order_prefix_id ?? `#${booking.id}` })}
                         </h3>
                         <Chip
                           size="sm"

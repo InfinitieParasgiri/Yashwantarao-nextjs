@@ -277,6 +277,33 @@
   All elements sit with clear vertical breathing room, avoiding coverage by the bottom navigation bar and preventing button overlap.
 - **Pending Tasks**: None.
 
+## [2026-08-03] - Category Switching Product Duplication & Direct API Fetching Fix
+- **Feature**: Replaced SWR caching layer in `useInfiniteData` with clean, direct API fetching on category/filter change and fixed CategoryProductsPage render logic.
+- **Files Modified**: [src/hooks/useInfiniteData.ts](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/hooks/useInfiniteData.ts), [src/pages/categories/[slug]/index.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/categories/[slug]/index.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+- **Logic Changes**: 
+  - Whenever category or filters change (`keyString`), previous category data is immediately wiped (`setData([])`, `setTotal(0)`, `setIsLoading(true)` synchronously).
+  - Fixed `CategoryProductsPage` grid render condition (`isLoading ? SKELETONS : products.map(...)`) so old products are NEVER rendered above skeletons while a new category is loading.
+  - In-flight request cancellation guard discards responses if category changes mid-fetch.
+  - Multi-store deduplication (`getItemKey`) preserves products from different stores (e.g. Pani Puri from "Tasty Bites" and "Spicy Food") while preventing true duplicates.
+- **Pending Tasks**: None.
+
+## [2026-08-03] - Dedicated Delivery OTP Row Layout
+- **Feature**: Positioned Delivery OTP in a dedicated row right after the `Est. Delivery` & payment method section on order cards.
+- **Files Modified**: [src/components/Cards/OrderCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/OrderCard.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+- **Logic Changes**: 
+  - Removed top header OTP badge to prevent overlap with download button and order status chip.
+  - Added a clean dedicated row right after `Est. Delivery` and payment method (`cod`/card) with a key icon, "Delivery OTP" label, and a styled warning pill badge displaying the OTP value (`645361`).
+- **Pending Tasks**: None.
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -261,10 +261,10 @@ const CourierBookingDetailPage: React.FC = () => {
         homeHref={isCourier ? "/courier" : "/"}
         breadcrumbs={[
           { href: backPath, label: backLabel },
-          { href: "#", label: `${t("courier.booking", "Courier Booking")} #${booking.id}` },
+          { href: "#", label: `${t("courier.booking", "Courier Booking")} ${booking.order_prefix_id ?? `#${booking.id}`}` },
         ]}
       />
-      <PageHead pageTitle={`Courier Booking #${booking.id}`} />
+      <PageHead pageTitle={`Courier Booking ${booking.order_prefix_id ?? `#${booking.id}`}`} />
 
       <UserLayout activeTab={isCourier ? "couriers" : "orders"}>
         <div className="w-full space-y-6 pb-20 text-start">
@@ -284,7 +284,7 @@ const CourierBookingDetailPage: React.FC = () => {
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <h1 className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                    {t("courier.bookingDetail", "Courier Booking")} #{booking.id}
+                    {t("courier.bookingDetail", "Courier Booking")} {booking.order_prefix_id ?? `#${booking.id}`}
                   </h1>
                 </div>
                 <p className="text-xs text-gray-500 dark:text-gray-400">

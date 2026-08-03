@@ -576,6 +576,8 @@ export interface Order {
   transaction_id?: string | null;
   transactionId?: string | null;
   status: OrderStatus;
+  otp_required?: boolean;
+  otp?: string | number | null;
   invoice: string;
   fulfillment_type: string;
   estimated_delivery_time: number;
@@ -1521,6 +1523,7 @@ export interface ParcelType {
 
 export interface CourierRequest {
   id: number;
+  order_prefix_id?: string | null;
   user_id: number;
   delivery_zone_id: number;
   parcel_type_id: number;

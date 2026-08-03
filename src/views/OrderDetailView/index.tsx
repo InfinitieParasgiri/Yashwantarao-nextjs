@@ -175,6 +175,21 @@ const OrderDetailPageView: React.FC<OrderDetailPageViewProps> = ({ order }) => {
                 {formatString(order?.status)}
               </Chip>
 
+              {order.otp !== undefined &&
+                order.otp !== null &&
+                String(order.otp).trim() !== "" && (
+                  <Chip
+                    color="warning"
+                    variant="flat"
+                    size="sm"
+                    radius="sm"
+                    className="text-xs h-8 font-bold tracking-wider"
+                    title={`OTP: ${order.otp}`}
+                  >
+                    OTP: {order.otp}
+                  </Chip>
+                )}
+
               {order.status !== "cancelled" && (
                 <Button
                   color="primary"

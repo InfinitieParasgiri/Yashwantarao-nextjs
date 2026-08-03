@@ -10,6 +10,7 @@ import {
   Star,
   HandCoins,
   RotateCcw,
+  KeyRound,
 } from "lucide-react";
 import {
   Accordion,
@@ -342,6 +343,23 @@ const OrderCard: FC<OrderCardProps> = ({ order }) => {
                 </p>
               </div>
             </div>
+
+            {/* Delivery OTP Row */}
+            {order.otp !== undefined &&
+              order.otp !== null &&
+              String(order.otp).trim() !== "" && (
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-dashed border-gray-200 dark:border-gray-800">
+                  <div className="flex items-center gap-1.5">
+                    <KeyRound className="w-3.5 h-3.5 text-warning-600 dark:text-warning-400" />
+                    <span className="text-xs font-medium text-foreground/70">
+                      Delivery OTP
+                    </span>
+                  </div>
+                  <span className="text-xs font-bold tracking-widest px-2.5 py-0.5 rounded-md bg-warning-100 dark:bg-warning-950/60 text-warning-700 dark:text-warning-400 border border-warning-200 dark:border-warning-800">
+                    {order.otp}
+                  </span>
+                </div>
+              )}
           </div>
         </CardBody>
 

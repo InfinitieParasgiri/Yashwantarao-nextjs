@@ -125,7 +125,7 @@ const TrackCourierModal: FC<TrackCourierModalProps> = ({
                 </Button>
               </div>
               <p className="text-xs text-foreground/70">
-                {t("trackOrderModal.orderNumber", { slug: courierRequest.id })}
+                {t("trackOrderModal.orderNumber", { slug: courierRequest.order_prefix_id ?? `#${courierRequest.id}` })}
               </p>
             </div>
           </div>
