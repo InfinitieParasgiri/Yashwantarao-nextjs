@@ -295,6 +295,15 @@
   - Added a clean dedicated row right after `Est. Delivery` and payment method (`cod`/card) with a key icon, "Delivery OTP" label, and a styled warning pill badge displaying the OTP value (`645361`).
 - **Pending Tasks**: None.
 
+## [2026-08-03] - Courier Order Prefix ID Support
+- **Feature**: Displayed `order_prefix_id` (e.g. `PAR-184`) instead of plain ID `#184` across all courier pages, cards, and modals.
+- **Files Modified**: [src/types/ApiResponse/index.ts](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/types/ApiResponse/index.ts), [src/pages/my-account/couriers/index.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/my-account/couriers/index.tsx), [src/pages/my-account/bookings/[id]/index.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/my-account/bookings/[id]/index.tsx), [src/components/Modals/TrackCourierModal.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Modals/TrackCourierModal.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+- **Logic Changes**: 
+  - Added `order_prefix_id?: string | null` field to `CourierRequest` interface.
+  - Updated Courier card title (`Courier: PAR-184`), Courier Booking detail page breadcrumbs/heading (`Courier Booking PAR-184`), and live tracking modal (`Track Order PAR-184`) to display `booking.order_prefix_id` with fallback to `#${booking.id}`.
+- **Pending Tasks**: None.
+
+
 
 
 
