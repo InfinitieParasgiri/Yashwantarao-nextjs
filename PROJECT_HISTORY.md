@@ -318,11 +318,13 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-04] - Missing FTP Deployment Script Fix
-- **Feature**: Fixed `MODULE_NOT_FOUND` error (`Cannot find module '.../ftp.js'`) during `npm run deploy`.
-- **Files Modified**: [ftp.js](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/ftp.js), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-04] - next-api-debugger Integration
+- **Feature**: Integrated `next-api-debugger` package for real-time API call debugging and cURL/HAR export across both `fetch` and `axios` requests.
+- **Files Modified**: [package.json](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/package.json), [src/routes/api.ts](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/routes/api.ts), [src/pages/_app.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/_app.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Created `ftp.js` in project root matching the FTP configuration required by `npm run deploy` (`node ftp.js`), resolving the missing module error.
+  - Installed `github:InfinitieParasgiri/next-api-debugger` in `package.json`.
+  - Exported the primary `axios` instance (`api`) from `src/routes/api.ts`.
+  - Dynamically imported `<ApiDebugger />` with `ssr: false` in `src/pages/_app.tsx` and attached `axiosInstance={api}` to capture all incoming/outgoing API requests client-side.
 - **Pending Tasks**: None.
 
 

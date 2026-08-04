@@ -89,7 +89,7 @@ const constructApiBaseUrl = (baseUrl: string | undefined): string => {
   }
 };
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: constructApiBaseUrl(process.env.NEXT_PUBLIC_ADMIN_PANEL_URL),
 });
 

@@ -13,6 +13,8 @@ import "@/styles/index.css";
 import { CircleX } from "lucide-react";
 import i18n from "../../i18n";
 
+import { api } from "@/routes/api";
+
 const ToastProvider = dynamic(
   () => import("@heroui/react").then((mod) => mod.ToastProvider),
   { ssr: false }
@@ -21,6 +23,11 @@ const ToastProvider = dynamic(
 const ProgressBar = dynamic(() => import("@/components/ProgressBar"), {
   ssr: false,
 });
+
+const ApiDebugger = dynamic(
+  () => import("next-api-debugger").then((m) => m.ApiDebugger),
+  { ssr: false }
+);
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
@@ -98,7 +105,10 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
             ),
           }}
         />
-        <ReduxProvider>{getLayout(<Component {...pageProps} />)}</ReduxProvider>
+        <ReduxProvider>
+          {getLayout(<Component {...pageProps} />)}
+          <ApiDebugger axiosInstance={api} />
+        </ReduxProvider>
       </NextThemesProvider>
     </HeroUIProvider>
   );
