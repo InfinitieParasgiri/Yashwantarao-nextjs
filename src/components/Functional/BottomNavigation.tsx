@@ -14,11 +14,6 @@ const OfflineCartDrawer = dynamic(() => import("../Cart/OfflineCartDrawer"), {
 
 const BottomNavigation = () => {
   const router = useRouter();
-
-  if (router.pathname === "/") {
-    return null;
-  }
-
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const { t } = useTranslation();
@@ -121,6 +116,10 @@ const BottomNavigation = () => {
     }
     if (path) router.push(path);
   };
+
+  if (router.pathname === "/") {
+    return null;
+  }
 
   return (
     <div

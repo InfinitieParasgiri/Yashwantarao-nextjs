@@ -318,12 +318,11 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-04] - Landing Page Mobile Bottom Navigation Bar Hiding
-- **Feature**: Hidden mobile bottom navigation bar (`Home`, `Categories`, `Cart`, `Stores`, `Profile`) strictly on the main landing page (`/`).
-- **Files Modified**: [src/components/Functional/BottomNavigation.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Functional/BottomNavigation.tsx), [src/layouts/default.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/layouts/default.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-04] - Missing FTP Deployment Script Fix
+- **Feature**: Fixed `MODULE_NOT_FOUND` error (`Cannot find module '.../ftp.js'`) during `npm run deploy`.
+- **Files Modified**: [ftp.js](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/ftp.js), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Added early `router.pathname === "/"` check in `BottomNavigation.tsx` and updated layout condition `{!isLandingPage && <BottomNavigation />}` in `src/layouts/default.tsx`.
-  - The bottom bar is completely hidden on the main landing page (`/`), while remaining 100% visible and functional across all other pages (`/grocery`, `/restaurant`, `/courier`, `/categories`, etc.).
+  - Created `ftp.js` in project root matching the FTP configuration required by `npm run deploy` (`node ftp.js`), resolving the missing module error.
 - **Pending Tasks**: None.
 
 
