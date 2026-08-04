@@ -15,27 +15,26 @@ const BrandCard: FC<BrandCardProps> = ({ brand }) => {
     <div className="flex flex-col items-center w-full min-w-0">
       {/* Flexible height container instead of aspect-square */}
       <div className="w-full max-w-full overflow-hidden flex items-center justify-center">
-        <Card
-          className="backdrop-blur-sm w-full h-20 sm:h-full p-0 hover:scale-110 bg-gray-100 dark:bg-content1 transition-transform overflow-hidden flex items-center justify-center"
-          shadow="none"
-          isPressable={screen !== "mobile"}
-          href={`/brands/${brand.slug}`}
-          as={Link}
-          title={brand.title}
-        >
-          <CardBody className="flex items-center justify-center p-3 overflow-hidden">
-            <Image
-              unselectable="off"
-              src={brand.logo}
-              alt={brand.title}
-              className="object-contain max-w-full"
-              classNames={{
-                img: "rounded-lg max-w-full h-20 object-contain",
-              }}
-              loading="eager"
-            />
-          </CardBody>
-        </Card>
+        <Link href={`/brands/${brand.slug}`} title={brand.title} className="w-full block">
+          <Card
+            className="backdrop-blur-sm w-full h-20 sm:h-full p-0 hover:scale-110 bg-gray-100 dark:bg-content1 transition-transform overflow-hidden flex items-center justify-center cursor-pointer"
+            shadow="none"
+            as="div"
+          >
+            <CardBody className="flex items-center justify-center p-3 overflow-hidden">
+              <Image
+                unselectable="off"
+                src={brand.logo}
+                alt={brand.title}
+                className="object-contain max-w-full"
+                classNames={{
+                  img: "rounded-lg max-w-full h-20 object-contain",
+                }}
+                loading="eager"
+              />
+            </CardBody>
+          </Card>
+        </Link>
       </div>
 
       {/* Fixed height for title to maintain consistency */}

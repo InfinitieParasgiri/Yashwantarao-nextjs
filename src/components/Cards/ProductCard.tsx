@@ -193,27 +193,27 @@ const ProductCard: FC<ProductCardProps> = ({
     product.product_display_status !== undefined &&
     product.product_display_status !== "online";
 
+    const productPath = isRestaurant ? `/restaurant/item/${product.slug}` : `/products/${product.slug}`;
+
   return (
     <>
-      <Card
-        key={product.id}
-        as={"div"}
-        className="w-full h-full border-2 border-gray-100 dark:border-default-100 hover:shadow-md transition-shadow duration-200"
-        disableRipple
-        isPressable={
-          isRestaurantUnavailable
-            ? false
-            : screen !== "mobile"
-            ? !product.store_status.is_open || (!isRestaurant && defaultVariant.stock === 0)
-            : false
-        }
-        shadow="none"
-        isDisabled={(!isRestaurant && defaultVariant.stock === 0) && product.store_status.is_open}
-        onPress={() => {
-          if (isRestaurantUnavailable) return;
-          router.push(isRestaurant ? `/restaurant/item/${product.slug}` : `/products/${product.slug}`);
+      <Link
+        href={isRestaurantUnavailable ? "#" : productPath}
+        onClick={(e) => {
+          if (isRestaurantUnavailable) {
+            e.preventDefault();
+          }
         }}
+        className="w-full h-full block"
       >
+        <Card
+          key={product.id}
+          as={"div"}
+          className="w-full h-full border-2 border-gray-100 dark:border-default-100 hover:shadow-md transition-shadow duration-200 cursor-pointer"
+          disableRipple
+          shadow="none"
+          isDisabled={(!isRestaurant && defaultVariant.stock === 0) && product.store_status.is_open}
+        >
         <CardBody className="p-0 px-0">
           <div className="relative mb-2 flex justify-center cursor-pointer overflow-hidden">
             {product.main_image ? (
@@ -486,6 +486,7 @@ const ProductCard: FC<ProductCardProps> = ({
           )}
         </CardFooter>
       </Card>
+    </Link>
 
       {isCartOpen && (
         isRestaurant ? (

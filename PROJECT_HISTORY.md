@@ -318,14 +318,21 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-04] - HeroUI Link to NextLink Client-Side Routing Conversion
-- **Feature**: Replaced `@heroui/react` `<Link>` components in header navbar and mobile menu with Next.js `<NextLink>` to prevent browser full document HTTP reloads (`document` status 200/304).
-- **Files Modified**: [src/components/navbar.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/navbar.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-04] - Full Project Pressable Card Next.js Link SPA Routing Fix
+- **Feature**: Converted all HeroUI `<Card as={Link} isPressable>` and `onPress` components to native Next.js `<Link>` wrappers to eliminate full HTML `document` GET reloads (Status 200/304).
+- **Files Modified**: 
+  - [src/components/Cards/CategoryCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/CategoryCard.tsx)
+  - [src/components/Cards/BrandCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/BrandCard.tsx)
+  - [src/components/Cards/ProductCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/ProductCard.tsx)
+  - [src/components/Cards/SectionCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/SectionCard.tsx)
+  - [src/views/homePage/HomeTopSlider.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/HomeTopSlider.tsx)
+  - [src/views/homePage/HomeCarouselSlider.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/HomeCarouselSlider.tsx)
+  - [src/layouts/UserLayout.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/layouts/UserLayout.tsx)
+  - [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Removed `@heroui/react` `Link` import from `src/components/navbar.tsx`.
-  - Replaced HeroUI `<Link>` with `NextLink` in `FallbackCartIcon` and mobile navigation drawer items.
-  - Replaced `<Link href="#" onClick={...}>` cart icon trigger with a native `<button>` element to prevent hash routing and document requests.
-  - All header links now use true Next.js client-side routing, preventing full HTML `document` GET requests in Chrome Network tab.
+  - Wrapped HeroUI `<Card as="div">` elements in standard Next.js `<Link href="...">` components across all category, brand, product, section, and banner cards.
+  - Removed HeroUI `isPressable` and `onPress` overrides that were bypassing Next.js client router.
+  - Clicking any card now performs pure Next.js SPA in-memory navigation without triggering HTML `document` GET requests in Chrome Network tab.
 - **Pending Tasks**: None.
 
 

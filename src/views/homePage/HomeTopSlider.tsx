@@ -132,13 +132,8 @@ const HomeTopSlider: FC<HomeTopSliderProps> = ({
             {bannerImages?.top &&
               bannerImages.top.map((banner) => (
                 <SwiperSlide key={banner.id}>
-                  <Card
-                    className="border-none"
-                    radius="lg"
-                    isPressable={screen !== "mobile"}
-                    as={Link}
-                    shadow="none"
-                    href={
+                  {(() => {
+                    const bannerHref =
                       banner.type === "brand"
                         ? `/brands/${banner.brand_slug}`
                         : banner.type === "category"
@@ -147,17 +142,26 @@ const HomeTopSlider: FC<HomeTopSliderProps> = ({
                             ? `/products/${banner.product_slug}`
                             : banner.type === "custom" && banner.custom_url
                               ? banner.custom_url
-                              : "#"
-                    }
-                  >
-                    <Image
-                      src={banner.banner_image}
-                      alt={banner.title}
-                      loading="eager"
-                      radius="lg"
-                      className="w-full h-full aspect-409/240 object-cover"
-                    />
-                  </Card>
+                              : "#";
+                    return (
+                      <Link href={bannerHref} className="w-full block">
+                        <Card
+                          className="border-none cursor-pointer"
+                          radius="lg"
+                          as="div"
+                          shadow="none"
+                        >
+                          <Image
+                            src={banner.banner_image}
+                            alt={banner.title}
+                            loading="eager"
+                            radius="lg"
+                            className="w-full h-full aspect-409/240 object-cover"
+                          />
+                        </Card>
+                      </Link>
+                    );
+                  })()}
                 </SwiperSlide>
               ))}
           </Swiper>

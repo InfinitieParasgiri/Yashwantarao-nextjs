@@ -34,28 +34,31 @@ const CategoryCard: FC<CategoryCardProps> = ({ category, moduleType }) => {
   return (
     <div className="flex flex-col items-center w-full min-w-0">
       <div className="w-full max-w-full overflow-hidden flex items-center justify-center">
-        <Card
-          className="relative overflow-hidden w-full h-16 sm:h-20 p-0 hover:scale-105 transition-transform border-none rounded-2xl bg-transparent flex items-center justify-center"
-          shadow="none"
-          isPressable={screen !== "mobile"}
-          as={Link}
+        <Link
           href={link}
           title={category.title}
-          onPress={() =>
+          onClick={() =>
             trackCategoryView(category?.id?.toString(), category?.title)
           }
+          className="w-full block"
         >
-          <Image
-            src={category.image}
-            alt={category.title}
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain block"
-            classNames={{
-              img: "rounded-lg object-contain block",
-            }}
-            loading="eager"
-            removeWrapper
-          />
-        </Card>
+          <Card
+            className="relative overflow-hidden w-full h-16 sm:h-20 p-0 hover:scale-105 transition-transform border-none rounded-2xl bg-transparent flex items-center justify-center cursor-pointer"
+            shadow="none"
+            as="div"
+          >
+            <Image
+              src={category.image}
+              alt={category.title}
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain block"
+              classNames={{
+                img: "rounded-lg object-contain block",
+              }}
+              loading="eager"
+              removeWrapper
+            />
+          </Card>
+        </Link>
       </div>
       <div className="h-8 flex items-center w-full min-w-0">
         <h2

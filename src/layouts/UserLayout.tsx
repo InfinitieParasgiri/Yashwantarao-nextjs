@@ -218,6 +218,7 @@ const UserLayout: FC<UserLayoutProps> = ({ children, activeTab }) => {
                   key={item.key}
                   as={Link}
                   href={item.href}
+                  onPress={() => router.push(item.href)}
                   className={`my-0.5 ${item.isActive ? "bg-default-100" : ""}`}
                   title={item.label}
                   textValue={item.label}
