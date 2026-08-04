@@ -18,6 +18,9 @@ const BottomNavigation = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const { t } = useTranslation();
   const { isSingleVendor } = useSettings();
+  const activeModule = useSelector(
+    (state: RootState) => state.module.activeModule,
+  );
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
   const cartCount =
     useSelector((state: RootState) => state.cart.cartData?.items_count) ||
@@ -86,7 +89,7 @@ const BottomNavigation = () => {
     },
     {
       id: "stores",
-      label: t("pageTitle.stores"),
+      label: t("nav.restaurant"),
       icon: Store,
       path: "/stores",
       protected: false,
@@ -98,7 +101,10 @@ const BottomNavigation = () => {
       path: "/my-account",
       protected: true,
     },
-  ].filter((item) => !(isSingleVendor && item.id === "stores"));
+  ].filter(
+    (item) =>
+      !(item.id === "stores" && (isSingleVendor || activeModule !== "restaurant")),
+  );
 
   const handleTabClick = (
     itemId: string,

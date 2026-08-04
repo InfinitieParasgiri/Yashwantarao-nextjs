@@ -60,7 +60,7 @@ const StoresPage: NextPageWithLayout<StoresPageProps> = ({ initialStores }) => {
     initialData: initialStores?.data?.data || [],
     initialTotal: initialStores?.data?.total || 0,
     passLocation: true,
-    extraParams: { search: debouncedSearch },
+    extraParams: { search: debouncedSearch, business_type: "restaurant" },
   });
 
   useEffect(() => {
@@ -218,6 +218,7 @@ export const getServerSideProps: GetServerSideProps | undefined = isSSR()
         latitude: lat,
         longitude: lng,
         search: searchQuery,
+        business_type: "restaurant",
       });
 
       return {
