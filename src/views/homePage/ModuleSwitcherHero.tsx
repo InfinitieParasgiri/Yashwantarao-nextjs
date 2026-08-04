@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "@/lib/cookies";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 
 const ModuleSwitcherHero = () => {
   const { t } = useTranslation();
@@ -61,6 +60,13 @@ const ModuleSwitcherHero = () => {
   const handleModuleSwitch = (mod: AppModule) => {
     dispatch(setActiveModule(mod));
     setCookie("homeCategory", mod);
+  };
+
+  const handleModuleNavigate = (mod: AppModule, path: string) => {
+    handleModuleSwitch(mod);
+    if (router.pathname !== path) {
+      void router.push(path);
+    }
   };
 
   const getBgClass = (mod: AppModule, isActive: boolean) => {
@@ -278,15 +284,16 @@ const ModuleSwitcherHero = () => {
                 const mod = m.id as AppModule;
                 const isActive = displayedModule === mod;
                 return (
-                  <Link
+                  <button
+                    type="button"
                     key={m.id}
-                    href={m.path}
-                    onClick={() => handleModuleSwitch(mod)}
+                    onClick={() => handleModuleNavigate(mod, m.path)}
                     className={`flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 rounded-full px-2 py-1.5 pr-3 shadow-md transition-all cursor-pointer group ${
                       isActive
                         ? "ring-4 ring-white/70 scale-105 shadow-xl"
                         : "opacity-85 hover:opacity-100"
                     }`}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     <div className="w-8 h-8 relative bg-gray-100 rounded-full overflow-hidden flex items-center justify-center p-1 shrink-0">
                       <Image
@@ -305,7 +312,7 @@ const ModuleSwitcherHero = () => {
                     >
                       <ArrowRight size={13} strokeWidth={3} />
                     </div>
-                  </Link>
+                  </button>
                 );
               })
             ) : (
@@ -333,15 +340,16 @@ const ModuleSwitcherHero = () => {
                 const mod = m.id as AppModule;
                 const isActive = displayedModule === mod;
                 return (
-                  <Link
+                  <button
+                    type="button"
                     key={m.id}
-                    href={m.path}
-                    onClick={() => handleModuleSwitch(mod)}
+                    onClick={() => handleModuleNavigate(mod, m.path)}
                     className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 border transition-all cursor-pointer ${
                       isActive
                         ? "bg-white/25 border-2 border-white text-white font-bold shadow-md"
                         : "border-white/40 text-white/90 hover:bg-white/10"
                     }`}
+                    aria-current={isActive ? "page" : undefined}
                   >
                     <div className="w-5 h-5 relative shrink-0">
                       <Image
@@ -355,7 +363,7 @@ const ModuleSwitcherHero = () => {
                     <span className="text-xs font-semibold whitespace-nowrap">
                       {m.name}
                     </span>
-                  </Link>
+                  </button>
                 );
               })
             )}

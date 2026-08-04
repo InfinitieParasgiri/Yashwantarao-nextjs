@@ -253,14 +253,20 @@ export const Navbar: FC = () => {
                     router.pathname.startsWith(m.path) ||
                     (activeModule === m.id && router.pathname !== "/");
                   return (
-                    <NextLink
+                    <button
+                      type="button"
                       key={m.id}
-                      href={m.path}
+                      onClick={() => {
+                        if (router.pathname !== m.path) {
+                          void router.push(m.path);
+                        }
+                      }}
                       className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs transition-all cursor-pointer ${
                         isActive
                           ? "border-2 border-white bg-white/25 text-white font-bold shadow-xs"
                           : "border border-white/35 bg-black/10 hover:bg-white/15 text-white/90 font-medium"
                       }`}
+                      aria-current={isActive ? "page" : undefined}
                     >
                       <div className="w-5 h-5 relative shrink-0">
                         <Image
@@ -271,7 +277,7 @@ export const Navbar: FC = () => {
                         />
                       </div>
                       <span>{m.name}</span>
-                    </NextLink>
+                    </button>
                   );
                 })}
               </NavbarItem>
