@@ -318,12 +318,14 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-04] - Next.js Background Route Prefetching Integration
-- **Feature**: Replaced imperative `router.push()` buttons with native Next.js `<Link>` / `<NextLink>` components for automatic background route prefetching.
-- **Files Modified**: [src/components/navbar.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/navbar.tsx), [src/views/homePage/ModuleSwitcherHero.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/ModuleSwitcherHero.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-04] - HeroUI Link to NextLink Client-Side Routing Conversion
+- **Feature**: Replaced `@heroui/react` `<Link>` components in header navbar and mobile menu with Next.js `<NextLink>` to prevent browser full document HTTP reloads (`document` status 200/304).
+- **Files Modified**: [src/components/navbar.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/navbar.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Converted `<button onClick={() => router.push(...)}>` module pills in `Navbar.tsx` and `ModuleSwitcherHero.tsx` to Next.js `<NextLink href="...">` / `<Link href="...">`.
-  - Next.js now prefetches route bundles (`/grocery`, `/restaurant`, `/courier`) in the background automatically, eliminating browser tab reload indicators during client-side navigation.
+  - Removed `@heroui/react` `Link` import from `src/components/navbar.tsx`.
+  - Replaced HeroUI `<Link>` with `NextLink` in `FallbackCartIcon` and mobile navigation drawer items.
+  - Replaced `<Link href="#" onClick={...}>` cart icon trigger with a native `<button>` element to prevent hash routing and document requests.
+  - All header links now use true Next.js client-side routing, preventing full HTML `document` GET requests in Chrome Network tab.
 - **Pending Tasks**: None.
 
 

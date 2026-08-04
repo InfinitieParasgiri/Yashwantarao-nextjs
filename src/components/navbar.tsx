@@ -7,7 +7,6 @@ import {
   NavbarBrand,
   NavbarItem,
   NavbarMenuItem,
-  Link,
   Image,
   useDisclosure,
   Button,
@@ -26,9 +25,9 @@ import { useTranslation } from "react-i18next";
 import NextLink from "next/link";
 import { useHomeRoute } from "@/hooks/useHomeRoute";
 const FallbackCartIcon = () => (
-  <Link href="/cart">
+  <NextLink href="/cart">
     <ShoppingCart className="text-default-500 cursor-pointer" />
-  </Link>
+  </NextLink>
 );
 
 const Badge = dynamic(() => import("@heroui/react").then((mod) => mod.Badge), {
@@ -300,9 +299,9 @@ export const Navbar: FC = () => {
                     variant="solid"
                     classNames={{ badge: "text-xs" }}
                   >
-                    <Link
+                    <button
+                      type="button"
                       title={t("cart_title")}
-                      href="#"
                       onClick={(event) => {
                         event.preventDefault();
                         if (isLoggedIn) {
@@ -311,9 +310,10 @@ export const Navbar: FC = () => {
                           openOfflineCart();
                         }
                       }}
+                      className="bg-transparent border-0 p-0 cursor-pointer flex items-center justify-center"
                     >
                       <ShoppingCart className="text-white cursor-pointer" />
-                    </Link>
+                    </button>
                   </Badge>
                 </div>
               </NavbarItem>
@@ -336,16 +336,14 @@ export const Navbar: FC = () => {
                 const Icon = item.icon;
                 return (
                   <NavbarMenuItem key={`${item.label}-${index}`}>
-                    <Link
-                      color="foreground"
+                    <NextLink
                       href={item.href}
-                      size="lg"
-                      className="w-full flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-default-100 transition-colors"
+                      className="w-full flex items-center gap-3 py-2 px-2 rounded-lg text-foreground hover:bg-default-100 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <Icon size={20} className="text-default-500" />
                       <span>{item.label}</span>
-                    </Link>
+                    </NextLink>
                   </NavbarMenuItem>
                 );
               })}
