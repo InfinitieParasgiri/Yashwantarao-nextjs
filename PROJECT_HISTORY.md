@@ -303,6 +303,30 @@
   - Updated Courier card title (`Courier: PAR-184`), Courier Booking detail page breadcrumbs/heading (`Courier Booking PAR-184`), and live tracking modal (`Track Order PAR-184`) to display `booking.order_prefix_id` with fallback to `#${booking.id}`.
 - **Pending Tasks**: None.
 
+## [2026-08-04] - Mobile Module Switcher Conditional UI Styling
+- **Feature**: Rendered white pill buttons with colored arrows (Image 1 style) strictly on the landing page (`/`), while preserving translucent outlined pills (Image 2 style) on module pages (`/grocery`, `/restaurant`, `/courier`) for mobile view.
+- **Files Modified**: [src/views/homePage/ModuleSwitcherHero.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/ModuleSwitcherHero.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+- **Logic Changes**: 
+  - Added route check (`router.pathname === "/"`) to render Image 1 white pills with colored circle arrows on the main landing page, while preserving Image 2 translucent pill buttons on `/grocery`, `/restaurant`, and `/courier` pages in mobile view.
+- **Pending Tasks**: None.
+
+## [2026-08-04] - Hero Header & Content Section Gap Removal (Mobile View)
+- **Feature**: Removed large 80px white gap between cyan Hero header banner and category/content section on mobile view.
+- **Files Modified**: [src/pages/grocery/index.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/grocery/index.tsx), [src/pages/restaurant/index.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/restaurant/index.tsx), [src/views/homePage/ModuleSwitcherHero.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/ModuleSwitcherHero.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+- **Logic Changes**: 
+  - Replaced hardcoded `mt-20` (80px margin) on main page wrapper in `grocery/index.tsx` and `restaurant/index.tsx` with responsive `mt-3 md:mt-6`.
+  - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
+- **Pending Tasks**: None.
+
+## [2026-08-04] - Landing Page Mobile Bottom Navigation Bar Hiding
+- **Feature**: Hidden mobile bottom navigation bar (`Home`, `Categories`, `Cart`, `Stores`, `Profile`) strictly on the main landing page (`/`).
+- **Files Modified**: [src/components/Functional/BottomNavigation.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Functional/BottomNavigation.tsx), [src/layouts/default.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/layouts/default.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+- **Logic Changes**: 
+  - Added early `router.pathname === "/"` check in `BottomNavigation.tsx` and updated layout condition `{!isLandingPage && <BottomNavigation />}` in `src/layouts/default.tsx`.
+  - The bottom bar is completely hidden on the main landing page (`/`), while remaining 100% visible and functional across all other pages (`/grocery`, `/restaurant`, `/courier`, `/categories`, etc.).
+- **Pending Tasks**: None.
+
+
 
 
 

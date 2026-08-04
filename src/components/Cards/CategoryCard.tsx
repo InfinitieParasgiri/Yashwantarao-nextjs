@@ -35,7 +35,7 @@ const CategoryCard: FC<CategoryCardProps> = ({ category, moduleType }) => {
     <div className="flex flex-col items-center w-full min-w-0">
       <div className="w-full max-w-full overflow-hidden flex items-center justify-center">
         <Card
-          className="relative overflow-hidden w-full h-24 sm:h-28 p-0 hover:scale-110 transition-transform border-none rounded-3xl bg-transparent"
+          className="relative overflow-hidden w-full h-16 sm:h-20 p-0 hover:scale-105 transition-transform border-none rounded-2xl bg-transparent flex items-center justify-center"
           shadow="none"
           isPressable={screen !== "mobile"}
           as={Link}
@@ -45,18 +45,16 @@ const CategoryCard: FC<CategoryCardProps> = ({ category, moduleType }) => {
             trackCategoryView(category?.id?.toString(), category?.title)
           }
         >
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 flex justify-center w-full">
-            <Image
-              src={category.image}
-              alt={category.title}
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain block"
-              classNames={{
-                img: "rounded-lg object-contain block",
-              }}
-              loading="eager"
-              removeWrapper
-            />
-          </div>
+          <Image
+            src={category.image}
+            alt={category.title}
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain block"
+            classNames={{
+              img: "rounded-lg object-contain block",
+            }}
+            loading="eager"
+            removeWrapper
+          />
         </Card>
       </div>
       <div className="h-8 flex items-center w-full min-w-0">

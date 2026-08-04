@@ -13,9 +13,14 @@ const OfflineCartDrawer = dynamic(() => import("../Cart/OfflineCartDrawer"), {
 });
 
 const BottomNavigation = () => {
+  const router = useRouter();
+
+  if (router.pathname === "/") {
+    return null;
+  }
+
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const router = useRouter();
   const { t } = useTranslation();
   const { isSingleVendor } = useSettings();
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);

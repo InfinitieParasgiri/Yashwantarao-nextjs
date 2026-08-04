@@ -86,7 +86,7 @@ const HomeHero = () => {
       />
 
       {/* Container */}
-      <div className="relative z-10 max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-12 pt-[220px] md:pt-36 lg:pt-40 pb-12 lg:pb-16 flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div className="relative z-10 max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-12 pt-[200px] sm:pt-[210px] md:pt-36 lg:pt-40 pb-12 lg:pb-16 flex flex-col lg:flex-row items-center justify-between gap-8">
         {/* Left Content */}
         <div className="w-full lg:w-7/12 flex flex-col items-center lg:items-start text-center lg:text-left">
           <AnimatePresence mode="wait">

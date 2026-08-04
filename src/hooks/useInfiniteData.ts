@@ -1,5 +1,4 @@
 import { UserLocation } from "@/components/Location/types/LocationAutoComplete.types";
-import { isSSR } from "@/helpers/getters";
 import { getCookie } from "@/lib/cookies";
 import { useCallback, useEffect, useRef, useState, useMemo } from "react";
 

@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "@/lib/cookies";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 const ModuleSwitcherHero = () => {
@@ -98,7 +97,9 @@ const ModuleSwitcherHero = () => {
   return (
     <div className="relative w-[100vw] left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] overflow-visible">
       <div
-        className="relative w-full min-h-[380px] md:min-h-[420px] pt-[220px] md:pt-[140px] pb-12 md:pb-16 flex flex-col items-center overflow-hidden"
+        className={`relative w-full min-h-[320px] md:min-h-[420px] ${
+          router.pathname === "/" ? "pt-[200px] sm:pt-[210px]" : "pt-[120px] sm:pt-[130px]"
+        } md:pt-[140px] pb-4 sm:pb-8 md:pb-16 flex flex-col items-center overflow-hidden`}
         style={{
           background: "linear-gradient(180deg, #019CBF 0%, #036A81 100%)",
         }}
@@ -246,66 +247,121 @@ const ModuleSwitcherHero = () => {
             {config[displayedModule].title}
           </h1>
 
-          {/* 3 Module Buttons - Mobile View (Image 1 style) */}
+          {/* 3 Module Buttons - Mobile View */}
           <div className="flex md:hidden items-center justify-center gap-2 my-4 w-full flex-wrap">
-            {[
-              {
-                id: "grocery",
-                name: t("nav.grocery") || "Grocery",
-                image: "/assets/grocery-3d.png",
-                path: "/grocery",
-                arrowBg: "bg-[#84cc16]",
-              },
-              {
-                id: "restaurant",
-                name: t("nav.restaurant") || "Restaurant",
-                image: "/assets/restaurant-3d.png",
-                path: "/restaurant",
-                arrowBg: "bg-[#f97316]",
-              },
-              {
-                id: "courier",
-                name: t("nav.courier") || "Courier",
-                image: "/assets/courier-3d.png",
-                path: "/courier",
-                arrowBg: "bg-[#a855f7]",
-              },
-            ].map((m) => {
-              const mod = m.id as AppModule;
-              const isActive = displayedModule === mod;
-              return (
-                <button
-                  key={m.id}
-                  onClick={() => {
-                    handleModuleSwitch(mod);
-                    router.push(m.path);
-                  }}
-                  className={`flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 rounded-full px-2 py-1.5 pr-3 shadow-md transition-all cursor-pointer group ${
-                    isActive
-                      ? "ring-4 ring-white/70 scale-105 shadow-xl"
-                      : "opacity-85 hover:opacity-100"
-                  }`}
-                >
-                  <div className="w-8 h-8 relative bg-gray-100 rounded-full overflow-hidden flex items-center justify-center p-1 shrink-0">
-                    <Image
-                      src={m.image}
-                      alt={m.name}
-                      width={16}
-                      height={16}
-                      className="object-contain"
-                    />
-                  </div>
-                  <span className="font-bold text-xs capitalize whitespace-nowrap px-0.5">
-                    {m.name}
-                  </span>
-                  <div
-                    className={`w-6 h-6 rounded-full ${m.arrowBg} text-white flex items-center justify-center ml-0.5 group-hover:translate-x-0.5 transition-transform shrink-0`}
+            {router.pathname === "/" ? (
+              // Image 1 style for Landing Page (/)
+              [
+                {
+                  id: "grocery",
+                  name: !t("nav.grocery") || t("nav.grocery").toLowerCase().includes("nav.") ? "Grocery" : t("nav.grocery"),
+                  image: "/assets/grocery-3d.png",
+                  path: "/grocery",
+                  arrowBg: "bg-[#84cc16]",
+                },
+                {
+                  id: "restaurant",
+                  name: !t("nav.restaurant") || t("nav.restaurant").toLowerCase().includes("nav.") ? "Restaurant" : t("nav.restaurant"),
+                  image: "/assets/restaurant-3d.png",
+                  path: "/restaurant",
+                  arrowBg: "bg-[#f97316]",
+                },
+                {
+                  id: "courier",
+                  name: !t("nav.courier") || t("nav.courier").toLowerCase().includes("nav.") ? "Courier" : t("nav.courier"),
+                  image: "/assets/courier-3d.png",
+                  path: "/courier",
+                  arrowBg: "bg-[#a855f7]",
+                },
+              ].map((m) => {
+                const mod = m.id as AppModule;
+                const isActive = displayedModule === mod;
+                return (
+                  <button
+                    key={m.id}
+                    onClick={() => {
+                      handleModuleSwitch(mod);
+                      router.push(m.path);
+                    }}
+                    className={`flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 rounded-full px-2 py-1.5 pr-3 shadow-md transition-all cursor-pointer group ${
+                      isActive
+                        ? "ring-4 ring-white/70 scale-105 shadow-xl"
+                        : "opacity-85 hover:opacity-100"
+                    }`}
                   >
-                    <ArrowRight size={13} strokeWidth={3} />
-                  </div>
-                </button>
-              );
-            })}
+                    <div className="w-8 h-8 relative bg-gray-100 rounded-full overflow-hidden flex items-center justify-center p-1 shrink-0">
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        width={16}
+                        height={16}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="font-bold text-xs capitalize whitespace-nowrap px-0.5">
+                      {m.name}
+                    </span>
+                    <div
+                      className={`w-6 h-6 rounded-full ${m.arrowBg} text-white flex items-center justify-center ml-0.5 group-hover:translate-x-0.5 transition-transform shrink-0`}
+                    >
+                      <ArrowRight size={13} strokeWidth={3} />
+                    </div>
+                  </button>
+                );
+              })
+            ) : (
+              // Image 2 style for Module pages (/grocery, /restaurant, /courier)
+              [
+                {
+                  id: "grocery",
+                  name: !t("nav.grocery") || t("nav.grocery").toLowerCase().includes("nav.") ? "Grocery" : t("nav.grocery"),
+                  image: "/assets/grocery-3d.png",
+                  path: "/grocery",
+                },
+                {
+                  id: "restaurant",
+                  name: !t("nav.restaurant") || t("nav.restaurant").toLowerCase().includes("nav.") ? "Restaurant" : t("nav.restaurant"),
+                  image: "/assets/restaurant-3d.png",
+                  path: "/restaurant",
+                },
+                {
+                  id: "courier",
+                  name: !t("nav.courier") || t("nav.courier").toLowerCase().includes("nav.") ? "Courier" : t("nav.courier"),
+                  image: "/assets/courier-3d.png",
+                  path: "/courier",
+                },
+              ].map((m) => {
+                const mod = m.id as AppModule;
+                const isActive = displayedModule === mod;
+                return (
+                  <button
+                    key={m.id}
+                    onClick={() => {
+                      handleModuleSwitch(mod);
+                      router.push(m.path);
+                    }}
+                    className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 border transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-white/25 border-2 border-white text-white font-bold shadow-md"
+                        : "border-white/40 text-white/90 hover:bg-white/10"
+                    }`}
+                  >
+                    <div className="w-5 h-5 relative shrink-0">
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        width={20}
+                        height={20}
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-xs font-semibold whitespace-nowrap">
+                      {m.name}
+                    </span>
+                  </button>
+                );
+              })
+            )}
           </div>
 
           {displayedModule !== "courier" && (

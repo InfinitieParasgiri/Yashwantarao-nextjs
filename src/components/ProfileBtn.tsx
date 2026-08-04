@@ -19,11 +19,9 @@ import {
   Package,
   MapPin,
   Wallet,
-  Receipt,
   LogOut,
   Settings,
   Gift,
-  Bell,
   Bookmark,
 } from "lucide-react";
 

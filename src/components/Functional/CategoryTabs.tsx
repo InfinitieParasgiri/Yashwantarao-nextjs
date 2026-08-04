@@ -189,7 +189,7 @@ const CategoryTabs: React.FC<CategoryTabsProps> = ({
   }
 
   return (
-    <div className={`w-full relative px-4 max-w-screen-2xl mx-auto ${className}`}>
+    <div className={`w-full relative px-4 max-w-screen-2xl mx-auto mb-2 sm:mb-3 ${className}`}>
       <button
         className="hidden"
         id="home-category-tabs"

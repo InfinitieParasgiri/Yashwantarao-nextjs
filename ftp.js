@@ -19,9 +19,9 @@ const rootPath = process.cwd();
 const SSR_EXCLUDE_FOLDERS = [".next", "node_modules", ".github", ".git"];
 
 const config = {
-  host: "",
-  user: "",
-  password: "",
+  host: "45.64.213.22",
+  user: "ftp_yashwantrao_delimo_web_infinitietech_in",
+  password: "Infinitie@0124",
   port: 21,
   localRoot: __dirname + "/build",
   remoteRoot: "/",

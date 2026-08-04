@@ -293,7 +293,7 @@ export default function DefaultLayout({
                 </main>
                 {isLandingPage && <Footer />}
                 <ScrollToTopButton />
-                <BottomNavigation />
+                {!isLandingPage && <BottomNavigation />}
                 <CookieConsent />
                 <RemovedItemsModal />
                 <FailedItemsModal />

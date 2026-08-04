@@ -3,7 +3,6 @@ import { store } from "@/lib/redux/store";
 import {
   addToCart,
   checkDeliveryZone,
-  clearCart,
   createOrder,
   getUserData,
   updateCartItem,

@@ -17,9 +17,7 @@ import {
   CreditCard,
   ChevronRight,
   Bookmark,
-  Banknote,
   Gift,
-  Bell,
   Package,
 } from "lucide-react";
 import { useSelector } from "react-redux";

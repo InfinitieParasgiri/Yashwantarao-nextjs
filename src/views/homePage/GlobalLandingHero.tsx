@@ -10,7 +10,7 @@ const GlobalLandingHero = () => {
   return (
     <div className="relative w-[100vw] left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] overflow-visible bg-white dark:bg-zinc-950">
       <div 
-        className="relative w-full min-h-[500px] pt-[120px] pb-16 flex flex-col items-center overflow-hidden"
+        className="relative w-full min-h-[400px] sm:min-h-[500px] pt-[120px] pb-12 md:pb-16 flex flex-col items-center overflow-hidden"
         style={{
           background: "linear-gradient(180deg, #f97316 0%, #ea580c 100%)" // Swiggy Orange
         }}

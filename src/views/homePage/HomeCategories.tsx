@@ -109,7 +109,7 @@ const HomeCategories: FC<HomeCategoriesProps> = ({
         id="home-categories-refetch"
       />
       {!shouldHide && (
-        <div className="w-full mb-4 px-4 max-w-screen-2xl mx-auto">
+        <div className="w-full mb-4">
           <div className="flex justify-between w-full items-center mb-4">
             <SectionHeading
               title={t("home.categories.title")}

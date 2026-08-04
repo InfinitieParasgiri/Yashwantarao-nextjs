@@ -94,7 +94,7 @@ const GroceryPage: NextPageWithLayout<GroceryPageProps> = ({
       <div className="flex flex-col gap-0">
         <ModuleSwitcherHero />
 
-        <div className="mt-20">
+        <div className="mt-3 md:mt-6">
           <CategoryTabs className="w-full" moduleType="grocery" />
           <HomeTopSlider initialBanners={initialBanners} moduleType="grocery" />
           <HomeCategories initialCategories={initialCategories} moduleType="grocery" />

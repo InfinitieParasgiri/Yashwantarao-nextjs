@@ -15,7 +15,7 @@ import dynamic from "next/dynamic";
 import { Product } from "@/types/ApiResponse";
 import Link from "next/link";
 import useSWR from "swr";
-import { getProducts, getStoreWiseProducts } from "@/routes/api";
+import { getStoreWiseProducts } from "@/routes/api";
 import { isSSR } from "@/helpers/getters";
 import { handleAddToCart, handleOfflineAddToCart } from "@/helpers/functionalHelpers";
 
