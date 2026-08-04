@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useMemo, useState } from "react";
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -131,6 +131,36 @@ export const Navbar: FC = () => {
     { label: t("nav.faqs"), href: "/faqs", icon: HelpCircle },
     { label: t("nav.about_us"), href: "/about-us", icon: Info },
   ];
+
+  const moduleNavItems = useMemo(() => [
+    {
+      id: "grocery",
+      name: !t("nav.grocery") || t("nav.grocery") === "nav.grocery" ? "Grocery" : t("nav.grocery"),
+      image: "/assets/grocery-3d.png",
+      path: "/grocery",
+    },
+    {
+      id: "restaurant",
+      name: !t("nav.restaurant") || t("nav.restaurant") === "nav.restaurant" ? "Restaurant" : t("nav.restaurant"),
+      image: "/assets/restaurant-3d.png",
+      path: "/restaurant",
+    },
+    {
+      id: "courier",
+      name: !t("nav.courier") || t("nav.courier") === "nav.courier" ? "Courier" : t("nav.courier"),
+      image: "/assets/courier-3d.png",
+      path: "/courier",
+    },
+  ], [t]);
+
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    moduleNavItems.forEach((item) => {
+      void router.prefetch(item.path);
+    });
+  }, [moduleNavItems, router]);
+
   return (
     <>
       <div
@@ -228,26 +258,7 @@ export const Navbar: FC = () => {
             {/* 3 Module Buttons (Hidden on Landing Page) */}
             {router.pathname !== "/" && (
               <NavbarItem className="flex items-center gap-1.5 mr-1 sm:mr-2">
-                {[
-                  {
-                    id: "grocery",
-                    name: !t("nav.grocery") || t("nav.grocery") === "nav.grocery" ? "Grocery" : t("nav.grocery"),
-                    image: "/assets/grocery-3d.png",
-                    path: "/grocery",
-                  },
-                  {
-                    id: "restaurant",
-                    name: !t("nav.restaurant") || t("nav.restaurant") === "nav.restaurant" ? "Restaurant" : t("nav.restaurant"),
-                    image: "/assets/restaurant-3d.png",
-                    path: "/restaurant",
-                  },
-                  {
-                    id: "courier",
-                    name: !t("nav.courier") || t("nav.courier") === "nav.courier" ? "Courier" : t("nav.courier"),
-                    image: "/assets/courier-3d.png",
-                    path: "/courier",
-                  },
-                ].map((m) => {
+                {moduleNavItems.map((m) => {
                   const isActive =
                     router.pathname === m.path ||
                     router.pathname.startsWith(m.path) ||

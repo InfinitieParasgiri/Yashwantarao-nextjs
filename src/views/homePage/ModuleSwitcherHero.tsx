@@ -24,6 +24,14 @@ const ModuleSwitcherHero = () => {
     setIsMounted(true);
   }, []);
 
+  React.useEffect(() => {
+    if (!router.isReady) return;
+
+    ["/grocery", "/restaurant", "/courier"].forEach((path) => {
+      void router.prefetch(path);
+    });
+  }, [router]);
+
   const displayedModule = React.useMemo(() => {
     if (router.pathname.startsWith("/restaurant")) return "restaurant";
     if (router.pathname.startsWith("/grocery")) return "grocery";
