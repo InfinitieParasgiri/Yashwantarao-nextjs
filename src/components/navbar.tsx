@@ -254,9 +254,9 @@ export const Navbar: FC = () => {
                     router.pathname.startsWith(m.path) ||
                     (activeModule === m.id && router.pathname !== "/");
                   return (
-                    <button
+                    <NextLink
                       key={m.id}
-                      onClick={() => router.push(m.path)}
+                      href={m.path}
                       className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs transition-all cursor-pointer ${
                         isActive
                           ? "border-2 border-white bg-white/25 text-white font-bold shadow-xs"
@@ -272,7 +272,7 @@ export const Navbar: FC = () => {
                         />
                       </div>
                       <span>{m.name}</span>
-                    </button>
+                    </NextLink>
                   );
                 })}
               </NavbarItem>

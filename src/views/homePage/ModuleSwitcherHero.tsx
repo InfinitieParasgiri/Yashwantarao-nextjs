@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { setCookie } from "@/lib/cookies";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const ModuleSwitcherHero = () => {
   const { t } = useTranslation();
@@ -277,12 +278,10 @@ const ModuleSwitcherHero = () => {
                 const mod = m.id as AppModule;
                 const isActive = displayedModule === mod;
                 return (
-                  <button
+                  <Link
                     key={m.id}
-                    onClick={() => {
-                      handleModuleSwitch(mod);
-                      router.push(m.path);
-                    }}
+                    href={m.path}
+                    onClick={() => handleModuleSwitch(mod)}
                     className={`flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 rounded-full px-2 py-1.5 pr-3 shadow-md transition-all cursor-pointer group ${
                       isActive
                         ? "ring-4 ring-white/70 scale-105 shadow-xl"
@@ -306,7 +305,7 @@ const ModuleSwitcherHero = () => {
                     >
                       <ArrowRight size={13} strokeWidth={3} />
                     </div>
-                  </button>
+                  </Link>
                 );
               })
             ) : (
@@ -334,12 +333,10 @@ const ModuleSwitcherHero = () => {
                 const mod = m.id as AppModule;
                 const isActive = displayedModule === mod;
                 return (
-                  <button
+                  <Link
                     key={m.id}
-                    onClick={() => {
-                      handleModuleSwitch(mod);
-                      router.push(m.path);
-                    }}
+                    href={m.path}
+                    onClick={() => handleModuleSwitch(mod)}
                     className={`flex items-center gap-2 rounded-full px-3.5 py-1.5 border transition-all cursor-pointer ${
                       isActive
                         ? "bg-white/25 border-2 border-white text-white font-bold shadow-md"
@@ -358,7 +355,7 @@ const ModuleSwitcherHero = () => {
                     <span className="text-xs font-semibold whitespace-nowrap">
                       {m.name}
                     </span>
-                  </button>
+                  </Link>
                 );
               })
             )}
