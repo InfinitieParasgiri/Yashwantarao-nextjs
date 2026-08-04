@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
   turbopack: {},
   reactStrictMode: true,
   output: isExport ? "export" : undefined,
-  trailingSlash: isExport ? true : false,
+  trailingSlash: false,
   images: {
     unoptimized: isExport,
     formats: ["image/avif", "image/webp"],

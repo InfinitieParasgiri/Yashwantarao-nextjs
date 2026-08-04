@@ -318,21 +318,12 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-04] - Full Project Pressable Card Next.js Link SPA Routing Fix
-- **Feature**: Converted all HeroUI `<Card as={Link} isPressable>` and `onPress` components to native Next.js `<Link>` wrappers to eliminate full HTML `document` GET reloads (Status 200/304).
-- **Files Modified**: 
-  - [src/components/Cards/CategoryCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/CategoryCard.tsx)
-  - [src/components/Cards/BrandCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/BrandCard.tsx)
-  - [src/components/Cards/ProductCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/ProductCard.tsx)
-  - [src/components/Cards/SectionCard.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Cards/SectionCard.tsx)
-  - [src/views/homePage/HomeTopSlider.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/HomeTopSlider.tsx)
-  - [src/views/homePage/HomeCarouselSlider.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/views/homePage/HomeCarouselSlider.tsx)
-  - [src/layouts/UserLayout.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/layouts/UserLayout.tsx)
-  - [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-04] - Trailing Slash HTTP Redirect Prevention
+- **Feature**: Fixed browser tab loading spinner caused by trailing slash redirects during client-side navigation.
+- **Files Modified**: [next.config.ts](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/next.config.ts), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Wrapped HeroUI `<Card as="div">` elements in standard Next.js `<Link href="...">` components across all category, brand, product, section, and banner cards.
-  - Removed HeroUI `isPressable` and `onPress` overrides that were bypassing Next.js client router.
-  - Clicking any card now performs pure Next.js SPA in-memory navigation without triggering HTML `document` GET requests in Chrome Network tab.
+  - Disabled dynamic `trailingSlash` enforcement (`trailingSlash: false`) in `next.config.ts`.
+  - Prevents server-side 301/307 redirects from `/restaurant` to `/restaurant/` on static export deployments, eliminating the browser tab reload spinner during SPA navigation.
 - **Pending Tasks**: None.
 
 
