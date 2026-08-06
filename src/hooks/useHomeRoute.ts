@@ -17,6 +17,5 @@ export const useHomeRoute = () => {
   if (activeModule === "grocery") return "/grocery";
   if (activeModule === "restaurant") return "/restaurant";
   if (activeModule === "courier") return "/courier";
-  
-  return "/";
+  return "/grocery";
 };

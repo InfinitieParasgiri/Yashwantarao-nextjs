@@ -318,12 +318,12 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-04] - Trailing Slash HTTP Redirect Prevention
-- **Feature**: Fixed browser tab loading spinner caused by trailing slash redirects during client-side navigation.
-- **Files Modified**: [next.config.ts](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/next.config.ts), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-06] - Unified Single Primary Color Active Bottom Tab Styling
+- **Feature**: Replaced module-specific active tab colors with a single unified app primary color (`text-primary bg-primary/10`) for all active bottom navigation tabs.
+- **Files Modified**: [src/components/Functional/BottomNavigation.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Functional/BottomNavigation.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Disabled dynamic `trailingSlash` enforcement (`trailingSlash: false`) in `next.config.ts`.
-  - Prevents server-side 301/307 redirects from `/restaurant` to `/restaurant/` on static export deployments, eliminating the browser tab reload spinner during SPA navigation.
+  - Updated `activeTabColorClass` in `BottomNavigation.tsx` to `text-primary bg-primary/10 dark:bg-primary/20 font-semibold`.
+  - Ensures consistent, unified primary branding across all active tabs regardless of module.
 - **Pending Tasks**: None.
 
 

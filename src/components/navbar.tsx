@@ -212,7 +212,7 @@ export const Navbar: FC = () => {
             />
             <div className="flex justify-between w-full md:min-w-32">
               <NavbarBrand className="gap-3 w-full min-w-32">
-                <NextLink href={homeRoute} title={t("nav.home")}>
+                <NextLink href="/" title={t("nav.home")}>
                   <Image
                     loading="eager"
                     src={siteHeaderDarkLogo}

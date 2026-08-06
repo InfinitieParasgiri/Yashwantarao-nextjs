@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Home, ShoppingCart, User, Package, Store } from "lucide-react";
+import { Home, ShoppingCart, User, Package, Store, History } from "lucide-react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { RootState } from "@/lib/redux/store";
@@ -22,6 +22,7 @@ const BottomNavigation = () => {
     (state: RootState) => state.module.activeModule,
   );
   const isLoggedIn = useSelector((state: RootState) => state.auth.isLoggedIn);
+
   const cartCount =
     useSelector((state: RootState) => state.cart.cartData?.items_count) ||
     undefined;
@@ -35,15 +36,33 @@ const BottomNavigation = () => {
     onClose: closeOfflineCart,
   } = useDisclosure();
 
+  const homePath = useMemo(() => {
+    if (activeModule === "restaurant") return "/restaurant";
+    if (activeModule === "courier") return "/courier";
+    return "/grocery";
+  }, [activeModule]);
+
   const activeTab = useMemo(() => {
-    const pathToTabMap: Record<string, string> = {
-      "/": "home",
-      "/cart": "cart",
-      "/categories": "categories",
-      "/my-account": "profile",
-    };
-    return pathToTabMap[router.pathname] || "";
-  }, [router.pathname]);
+    const currentPath = router.pathname;
+    if (
+      currentPath === "/" ||
+      currentPath.startsWith("/grocery") ||
+      currentPath.startsWith("/restaurant") ||
+      (currentPath.startsWith("/courier") && !currentPath.startsWith("/my-account/couriers"))
+    ) {
+      return "home";
+    }
+    if (currentPath.startsWith("/my-account/couriers")) {
+      return activeModule === "courier" ? "history" : "profile";
+    }
+    if (currentPath.startsWith("/categories")) return "categories";
+    if (currentPath.startsWith("/cart")) return "cart";
+    if (currentPath.startsWith("/stores")) return "stores";
+    if (currentPath.startsWith("/my-account")) return "profile";
+    return "";
+  }, [router.pathname, activeModule]);
+
+  const activeTabColorClass = "text-primary bg-primary/10 dark:bg-primary/20 font-semibold";
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -72,45 +91,71 @@ const BottomNavigation = () => {
     }
   }, [isLoggedIn, isOfflineCartOpen, closeOfflineCart]);
 
-  const navItems = [
-    { id: "home", label: t("home_title"), icon: Home, path: "/" },
-    {
-      id: "categories",
-      label: t("categories"),
-      icon: Package,
-      path: "/categories",
-    },
-    {
-      id: "cart",
-      label: t("cart_title"),
-      icon: ShoppingCart,
-      path: "/cart",
-      protected: true,
-    },
-    {
-      id: "stores",
-      label: t("nav.restaurant"),
-      icon: Store,
-      path: "/stores",
-      protected: false,
-    },
-    {
-      id: "profile",
-      label: t("profile"),
-      icon: User,
-      path: "/my-account",
-      protected: true,
-    },
-  ].filter(
-    (item) =>
-      !(item.id === "stores" && (isSingleVendor || activeModule !== "restaurant")),
-  );
+  const navItems = useMemo(() => {
+    if (activeModule === "courier") {
+      return [
+        { id: "home", label: t("home_title"), icon: Home, path: "/courier" },
+        {
+          id: "history",
+          label: t("history") || "History",
+          icon: History,
+          path: "/my-account/couriers",
+          protected: true,
+        },
+        {
+          id: "profile",
+          label: t("profile"),
+          icon: User,
+          path: "/my-account",
+          protected: true,
+        },
+      ];
+    }
+
+    return [
+      { id: "home", label: t("home_title"), icon: Home, path: homePath },
+      {
+        id: "categories",
+        label: t("categories"),
+        icon: Package,
+        path: "/categories",
+      },
+      {
+        id: "cart",
+        label: t("cart_title"),
+        icon: ShoppingCart,
+        path: "/cart",
+        protected: true,
+      },
+      {
+        id: "stores",
+        label: t("nav.restaurant"),
+        icon: Store,
+        path: "/stores",
+        protected: false,
+      },
+      {
+        id: "profile",
+        label: t("profile"),
+        icon: User,
+        path: "/my-account",
+        protected: true,
+      },
+    ].filter(
+      (item) =>
+        !(item.id === "stores" && (isSingleVendor || activeModule !== "restaurant")),
+    );
+  }, [activeModule, homePath, isSingleVendor, t]);
 
   const handleTabClick = (
     itemId: string,
     path?: string,
     protectedTab?: boolean,
   ) => {
+    if (itemId === "home") {
+      router.push(homePath);
+      return;
+    }
     if (itemId === "cart" && !isLoggedIn) {
       openOfflineCart();
       return;
@@ -147,7 +192,7 @@ const BottomNavigation = () => {
                   }
                   className={`relative flex flex-col items-center justify-center py-2 px-3 rounded-lg transition-all duration-200 min-w-0 flex-1 ${
                     isActive
-                      ? "text-green-600 bg-green-50"
+                      ? activeTabColorClass
                       : "text-foreground/50 hover:text-foreground/70"
                   }`}
                 >

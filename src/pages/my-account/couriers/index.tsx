@@ -93,6 +93,22 @@ const couriersFetcher = async (url: string) => {
 
 const CouriersLayout = ({ children, rightContent }: { children: React.ReactNode; rightContent?: React.ReactNode }) => {
   const { t } = useTranslation();
+  const activeModule = useSelector((state: RootState) => state.module.activeModule);
+  const isCourierModule = activeModule === "courier";
+
+  if (isCourierModule) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-6">
+        <PageHeader
+          title={t("userLayout.myCouriers", "My Couriers")}
+          subtitle={t("courier.listings.subtitle", "Track and manage your hyperlocal courier shipments")}
+          rightContent={rightContent}
+        />
+        {children}
+      </div>
+    );
+  }
+
   return (
     <>
       <MyBreadcrumbs
