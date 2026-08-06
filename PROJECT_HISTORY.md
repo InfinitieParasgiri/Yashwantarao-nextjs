@@ -318,12 +318,11 @@
   - Adjusted hero container bottom padding in `ModuleSwitcherHero.tsx` to `pb-4 sm:pb-8 md:pb-16` on mobile to seamlessly position the category icons row right beneath the hero banner.
 - **Pending Tasks**: None.
 
-## [2026-08-06] - Module-Filtered Categories Page Fix
-- **Feature**: Fixed `/categories` page to strictly filter and display categories according to the user's selected active module (`grocery` vs `restaurant`).
-- **Files Modified**: [src/pages/categories/index.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/pages/categories/index.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
+## [2026-08-06] - Cart Badge Vertical Offset Adjustment
+- **Feature**: Shifted red cart item count badge higher up (`-top-2.5`) directly above the cart icon handle.
+- **Files Modified**: [src/components/Functional/BottomNavigation.tsx](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/src/components/Functional/BottomNavigation.tsx), [PROJECT_HISTORY.md](file:///Users/infinitieparasgiri/Desktop/Nextjs-projcts/Hyperlocal-Yashwantarao-Customization-Web/PROJECT_HISTORY.md)
 - **Logic Changes**: 
-  - Updated `getServerSideProps` in `categories/index.tsx` to read the active module cookie (`activeModule` / `homeCategory`) so SSR category fetching passes `business_type` to backend API.
-  - Enabled `forceFetchOnMount: true` in client `useInfiniteData` hook to guarantee categories re-sync dynamically when switching between Grocery and Restaurant modules.
+  - Updated badge positioning class from `-top-1` to `-top-2.5` in `BottomNavigation.tsx`.
 - **Pending Tasks**: None.
 
 

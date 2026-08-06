@@ -196,18 +196,20 @@ const BottomNavigation = () => {
                       : "text-foreground/50 hover:text-foreground/70"
                   }`}
                 >
-                  <Icon
-                    size={20}
-                    className={`mb-1 transition-all duration-200 ${
-                      isActive ? "scale-110" : "scale-100"
-                    }`}
-                  />
-                  {item.id === "cart" &&
-                  (isLoggedIn ? cartCount : offLineCartCount) ? (
-                    <span className="absolute top-0 right-1 inline-flex items-center justify-center px-1.5 py-0.5 text-xs font-bold leading-none text-white bg-red-500 rounded-full">
-                      {isLoggedIn ? cartCount : offLineCartCount}
-                    </span>
-                  ) : null}
+                  <div className="relative inline-flex items-center justify-center">
+                    <Icon
+                      size={20}
+                      className={`mb-1 transition-all duration-200 ${
+                        isActive ? "scale-110" : "scale-100"
+                      }`}
+                    />
+                    {item.id === "cart" &&
+                    (isLoggedIn ? cartCount : offLineCartCount) ? (
+                      <span className="absolute -top-2.5 -right-2 inline-flex items-center justify-center min-w-[16px] h-[16px] px-1 text-[10px] font-bold leading-none text-white bg-red-500 rounded-full z-10 shadow-xs">
+                        {isLoggedIn ? cartCount : offLineCartCount}
+                      </span>
+                    ) : null}
+                  </div>
                   <span
                     className={`text-xs font-medium transition-all duration-200 ${
                       isActive ? "scale-105" : "scale-100"
