@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import { getCategories, getSettings } from "@/routes/api";
 import React from "react";
-import { isSSR } from "@/helpers/getters";
+import { isSSR, getCookieFromContext } from "@/helpers/getters";
 import MyBreadcrumbs from "@/components/custom/MyBreadcrumbs";
 import PageHeader from "@/components/custom/PageHeader";
 import CategoryCard from "@/components/Cards/CategoryCard";
@@ -58,6 +58,7 @@ const CategoriesPage: NextPageWithLayout<CategoriesPageProps> = ({
     initialData: initialCategories?.data?.data || [],
     initialTotal: initialCategories?.data?.total || 0,
     passLocation: true,
+    forceFetchOnMount: true,
     dataKey: `categories-page-${business_type || ""}-${router.query.slug || ""}`,
     extraParams: {
       slug: router.query.slug as string,
@@ -180,7 +181,14 @@ export const getServerSideProps: GetServerSideProps | undefined = isSSR()
         let categories = null;
 
         const slug = context.query.slug as string | undefined;
-        const business_type = context.query.business_type as string | undefined;
+        const activeModuleCookie =
+          (getCookieFromContext(context, "activeModule") as string) ||
+          (getCookieFromContext(context, "homeCategory") as string) ||
+          undefined;
+
+        const business_type =
+          (context.query.business_type as string) ||
+          (activeModuleCookie !== "courier" ? activeModuleCookie : undefined);
 
         if (lat && lng) {
           categories = await getCategories({
